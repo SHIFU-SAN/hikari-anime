@@ -52,12 +52,19 @@ export default function Carousel(props) {
         slideTimer.current = setInterval(() => {
             forwardSlide();
             console.log(index);
-        }, 4000);
+        }, 1000);
         return () => clearInterval(slideTimer.current);
     });
 
     function pauseSlideTimer() {
         clearInterval(slideTimer.current)
+    }
+
+    function resumeSlideTimer() {
+        slideTimer.current = setInterval(() => {
+            forwardSlide();
+        }, 1000);
+        return () => clearInterval(slideTimer.current);
     }
 
     function goToSlide(SlideIndex) {
@@ -92,7 +99,7 @@ export default function Carousel(props) {
         <div className="absolute w-full h-full bg-black opacity-50"></div>
         <div className="absolute bottom-32 left-40 w-1/2 text-white">
             <h1 className="text-[4rem]">{Anime_list[index].Name}</h1>
-            <p className="overflow-auto max-h-40 h-max text-xl">{Anime_list[index].Description}</p>
+            <p onMouseOver={pauseSlideTimer} onMouseOut={resumeSlideTimer} className="overflow-auto max-h-40 h-max text-xl">{Anime_list[index].Description}</p>
             <div className="flex flex-row items-center gap-16 mt-8">
                 <button
                     className="flex flex-row justify-center items-center w-40 h-12 border-2 border-white rounded-lg bg-red-500 text-xl">
@@ -104,7 +111,7 @@ export default function Carousel(props) {
                 </button>
             </div>
         </div>
-        <button onClick={()=>{
+        <button onClick={() => {
             backSlide();
             pauseSlideTimer();
         }} className="absolute top-1/2 -translate-y-1/2 left-8 text-[4rem] text-white">
