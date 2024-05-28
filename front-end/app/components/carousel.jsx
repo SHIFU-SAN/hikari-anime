@@ -1,7 +1,8 @@
 'use client'
 
 import {useState, useEffect, useRef} from "react";
-import Image from "next/image"
+import Image from "next/image";
+import Link from "next/link";
 import {MdPlayCircle, MdInfo, MdArrowCircleLeft, MdArrowCircleRight} from "react-icons/md";
 
 import EightySix from "../assets/Images/Posters/86/86_horizontal_poster.png";
@@ -12,6 +13,12 @@ import Doraemon from "../assets/Images/Posters/Doraemon/doraemin_horizontal_post
 
 export default function Carousel(props) {
     const Anime_list = [
+        {
+            'Name': "Neon Genesis Evangelion",
+            'View': '?',
+            'Poster': NGE,
+            'Description': "Vào năm 2015, Angel (Thiên Thần), những sinh vật hung tợn to lớn mạnh mẽ và không rõ nguồn gốc, lần thứ hai xuất hiện tại thành phố Tokyo-3. Hi vọng duy nhất cho sự tồn tại của nhân loại được đặt vào Evangelion, một cỗ máy chiến đấu dạng người được phát triển bởi NERV, cơ quan đặc vụ của Liên Hiệp Quốc. Có khả năng chống trả lại các đòn công kích của Angel nhưng điểm yếu sót lại của Evangelion là chỉ một vài người có tố chất mới có thể điều khiển được. Đó phải là những thanh thiếu niên được sinh ra vào 14 năm trước, 9 tháng sau khi lần đầu tiên Angel xuất hiện."
+        },
         {
             'Name': '86',
             'View': '?',
@@ -31,12 +38,6 @@ export default function Carousel(props) {
             'Description': "Mở đầu câu truyện, cậu học sinh trung học 17 tuổi Shinichi Kudo bị biến thành cậu bé Conan Edogawa. Shinichi trong phần đầu của Thám tử lừng danh Conan được miêu tả là một thám tử học đường xuất sắc. Trong một lần đi chơi công viên \"Miền Nhiệt đới\" với cô bạn từ thuở nhỏ Ran Mori, cậu tình cờ chứng kiến vụ một án giết người, Kishida - một hành khách trong trò chơi Chuyến tàu tốc hành đã bị giết một cách dã man. Cậu đã giúp cảnh sát làm sáng tỏ vụ án. Trên đường về nhà, cậu vô tình phát hiện một vụ làm ăn mờ ám của những người đàn ông mặc toàn đồ đen. Khi chúng phát hiện ra cậu, Shinichi đã bị đánh ngất đi. Sau đó những người đàn ông áo đen đó đã cho cậu uống một thứ thuốc độc chưa qua thử nghiệm là Apotoxin-4869 (APTX 4869) với mục đích thủ tiêu cậu. Tuy nhiên chất độc đã không giết chết Kudo. Khi tỉnh lại, cậu bàng hoàng nhận thấy mình đã bị teo nhỏ lại thành hình dạng của một cậu học sinh tiểu học. Theo lời khuyên của Tiến sĩ Hiroshi Agasa, Shinichi đã che giấu tung tích, để tránh việc Tổ chức Áo đen có thể phát hiện ra rằng cậu vẫn còn sống. Khi Ran hỏi tên cậu, Shinichi đã ghép \"Conan\" trong tên của Sir Arthur Conan Doyle và \"Edogawa\" trong tên của Edogawa Rampo, buột miệng nói ra tên mình là \"Conan Edogawa\". Tiến sĩ Agasa đã nói Conan là một người cháu của mình, nhưng hiện ông đang quá bận rộn không thể chăm sóc cho chú bé nên đã nhờ Ran trông nom Conan giúp mình. Ran nhận lời và từ đó Conan sống tại nhà của Ran tức văn phòng thám tử Mori, vừa che giấu thân phận vừa điều tra tung tích của Tổ chức Áo đen và tìm kiếm thuốc giải độc."
         },
         {
-            'Name': "Neon Genesis Evangelion",
-            'View': '?',
-            'Poster': NGE,
-            'Description': "Vào năm 2015, Angel (Thiên Thần), những sinh vật hung tợn to lớn mạnh mẽ và không rõ nguồn gốc, lần thứ hai xuất hiện tại thành phố Tokyo-3. Hi vọng duy nhất cho sự tồn tại của nhân loại được đặt vào Evangelion, một cỗ máy chiến đấu dạng người được phát triển bởi NERV, cơ quan đặc vụ của Liên Hiệp Quốc. Có khả năng chống trả lại các đòn công kích của Angel nhưng điểm yếu sót lại của Evangelion là chỉ một vài người có tố chất mới có thể điều khiển được. Đó phải là những thanh thiếu niên được sinh ra vào 14 năm trước, 9 tháng sau khi lần đầu tiên Angel xuất hiện."
-        },
-        {
             'Name': 'Doraemon',
             'View': '?',
             'Poster': Doraemon,
@@ -52,7 +53,7 @@ export default function Carousel(props) {
         slideTimer.current = setInterval(() => {
             forwardSlide();
             console.log(index);
-        }, 1000);
+        }, 4000);
         return () => clearInterval(slideTimer.current);
     });
 
@@ -63,7 +64,7 @@ export default function Carousel(props) {
     function resumeSlideTimer() {
         slideTimer.current = setInterval(() => {
             forwardSlide();
-        }, 1000);
+        }, 4000);
         return () => clearInterval(slideTimer.current);
     }
 
@@ -101,14 +102,16 @@ export default function Carousel(props) {
             <h1 className="text-[4rem]">{Anime_list[index].Name}</h1>
             <p onMouseOver={pauseSlideTimer} onMouseOut={resumeSlideTimer} className="overflow-auto max-h-40 h-max text-xl">{Anime_list[index].Description}</p>
             <div className="flex flex-row items-center gap-16 mt-8">
-                <button
+                <Link href="/player" onMouseOver={pauseSlideTimer} onMouseOut={resumeSlideTimer}
                     className="flex flex-row justify-center items-center w-40 h-12 border-2 border-white rounded-lg bg-red-500 text-xl">
                     <MdPlayCircle/>Xem ngay
-                </button>
-                <button
-                    className="flex flex-row justify-center items-center w-40 h-12 border-2 border-black rounded-lg bg-white text-xl text-black">
-                    <MdInfo/>Chi tiết
-                </button>
+                </Link>
+                <Link href="/anime">
+                    <button onMouseOver={pauseSlideTimer} onMouseOut={resumeSlideTimer}
+                            className="flex flex-row justify-center items-center w-40 h-12 border-2 border-black rounded-lg bg-white text-xl text-black">
+                        <MdInfo/>Chi tiết
+                    </button>
+                </Link>
             </div>
         </div>
         <button onClick={() => {

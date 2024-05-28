@@ -1,6 +1,6 @@
 import {MdHome, MdExpandMore, MdCalendarMonth} from 'react-icons/md';
 
-import NavExMenu from "../components/nav-ex-menu"
+import NavExMenu from "./nav-ex-menu"
 
 export default function NavMenu(props) {
     const Types = ["Hành động", "Phiêu lưu", "Ác quỷ", "Chính kịch", "Huyền ảo", "Harem", "Phép thuật",
@@ -13,7 +13,7 @@ export default function NavMenu(props) {
         "Mùa đông 2020", "Mùa thu 2020", "Mùa hạ 2020", "Mùa xuân 2020",
         "Mùa đông 2019", "Mùa thu 2019", "Mùa hạ 2019", "Mùa xuân 2019"]
 
-    return <ul id="nav-menu" className="absolute flex flex-col items-start top-full w-[20rem] h-dvh bg-white shadow-xl text-2xl">
+    return <ul id="nav-menu" className="hidden absolute flex flex-col items-start top-full w-[20rem] h-dvh bg-white shadow-xl text-2xl">
         <li className="w-full px-6 py-4 cursor-pointer hover:bg-rose-500 hover:text-white group:"><a href="#" className="flex flex-row items-center"><MdHome className="mr-2 text-[2rem]" /> Trang chủ</a></li>
         <li className="relative w-full px-6 py-4 cursor-pointer hover:bg-rose-500 hover:text-white group">
             Thể loại <MdExpandMore className="inline" />

@@ -1,11 +1,12 @@
 'use client'
 
-import Image from "next/image"
+import Image from "next/image";
+import Link from "next/link";
 
 import {MdMenu, MdSearch} from "react-icons/md";
 import Logo from "../assets/Images/Logo/HikariAnimeLogo.svg"
 
-import UserExMenu from "../components/usr-ex-menu"
+import UserExMenu from "./usr-ex-menu"
 import NavMenu from "./nav-menu"
 
 export default function NavBar(props) {
@@ -47,7 +48,7 @@ export default function NavBar(props) {
                         className="justify-center items-center p-1 size-10 rounded-full text-3xl hover:bg-rose-500 hover:text-white">
                     <MdMenu/>
                 </button>
-                <a href="#"><Image src={Logo} width={200} alt="Hikari Anime logo"/></a>
+                <Link href="/"><Image src={Logo} width={200} alt="Hikari Anime logo"/></Link>
             </div>
             <form action="" className="flex flex-row items-center col-span-2 border-2 border-rose-400 rounded-lg">
                 <label htmlFor="" className="sr-only">Search</label>
