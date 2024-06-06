@@ -1,57 +1,39 @@
-'use client'
-import {useState, useEffect} from 'react';
-import NextCors from 'nextjs-cors';
+"use client";
+
+import {useState, useEffect} from "react";
 
 import {MdArrowForwardIos} from "react-icons/md";
 
 import AnimePoster from "./anime-poster";
-import {NextResponse} from "next/server";
 
+const BASE_API = "http://127.0.0.1:8000";
 
 export default function AnimeSection(props) {
-    const [anime, setAnime] = useState([]);
-    const [FetchingStatus, setFetchingStatus] = useState(true);
+    const [anime_list, setAnimeList] = useState([]);
 
-    const BASE_API = "http://127.0.0.1:8000";
-
-    useEffect(() => {
-        if (FetchingStatus) {
-            getAnimeList();
-        }
-        return setFetchingStatus(false);
-        // getAnimeList();
-    });
-
-    async function getAnimeList(req, res) {
+    async function getAnimeList() {
         try {
-            await NextCors(req, res, {
-                // Options
-                methods: ['GET'],
-                origin: '*',
-                optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
-            });
-            res = await fetch("http://127.0.0.1:8000");
-            if (!res.ok) {
-                throw new Error("Failed to fetch data");
-            }
-            setAnime(res.json());
-            
+            await fetch(`${BASE_API}/anime`)
+                .then(res => res.json())
+                .then(data => setAnimeList(data));
         } catch (err) {
-            console.error(`Fetching API failed! Because: ${err}`);
+            console.error(`Failed to get anime list: ${err}`);
         }
     }
 
+    useEffect(() => {
+        getAnimeList();
+    }, []);
+
     return <section id="anime-section" className="w-full h-max pb-4 bg-white">
         <div className="relative flex flex-row items-center h-12 mb-4 bg-gradient-to-r from-rose-400 to-yellow-300">
-            <h1 className="ml-8 text-2xl text-white">Name section</h1>
-            <a className="absolute right-8 flex flex-row items-center text-2xl text-white underline">Xem
-                thêm <MdArrowForwardIos
-                    className="text-xl"/><MdArrowForwardIos className="text-xl"/></a>
+            <h1 className="ml-8 text-2xl text-white">Danh sách anime</h1>
+            {/*<a className="absolute right-8 flex flex-row items-center text-2xl text-white underline">Xem*/}
+            {/*    thêm <MdArrowForwardIos*/}
+            {/*        className="text-xl"/><MdArrowForwardIos className="text-xl"/></a>*/}
         </div>
         <ul className="grid grid-cols-5">
-            {
-                anime.map((e, i) => <AnimePoster key={i} poster={e.Poster} title={e.Title}/>)
-            }
+            {anime_list?.map(anime=><AnimePoster id={anime.ID} name={anime.Name} poster={anime.Poster}/>)}
         </ul>
     </section>
 }

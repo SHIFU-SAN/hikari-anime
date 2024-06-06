@@ -14,30 +14,35 @@ import Doraemon from "../assets/Images/Posters/Doraemon/doraemin_horizontal_post
 export default function Carousel(props) {
     const Anime_list = [
         {
+            'ID': 'A01',
             'Name': "Neon Genesis Evangelion",
             'View': '?',
             'Poster': NGE,
             'Description': "Vào năm 2015, Angel (Thiên Thần), những sinh vật hung tợn to lớn mạnh mẽ và không rõ nguồn gốc, lần thứ hai xuất hiện tại thành phố Tokyo-3. Hi vọng duy nhất cho sự tồn tại của nhân loại được đặt vào Evangelion, một cỗ máy chiến đấu dạng người được phát triển bởi NERV, cơ quan đặc vụ của Liên Hiệp Quốc. Có khả năng chống trả lại các đòn công kích của Angel nhưng điểm yếu sót lại của Evangelion là chỉ một vài người có tố chất mới có thể điều khiển được. Đó phải là những thanh thiếu niên được sinh ra vào 14 năm trước, 9 tháng sau khi lần đầu tiên Angel xuất hiện."
         },
         {
+            'ID': 'A02',
             'Name': '86',
             'View': '?',
             'Poster': EightySix,
             'Description': "Nước cộng hòa Magnolia đã bị tấn công bởi quốc gia hàng xóm là Đế chế. Bên ngoài 85 quận của Cộng hòa còn có ‘quận 86 không tồn tại’, nơi nam nữ thanh niên tiếp tục chiến đấu. Sheen chỉ đạo hành động của những kẻ đánh bom tự sát trẻ tuổi, trong khi Lena là một người quản lý người Hồi giáo. Câu chuyện về cuộc đấu tranh bi thảm giữa hai người này bắt đầu!"
         },
         {
+            'ID': 'A03',
             'Name': "ALDNOAH.Zero",
             'View': '?',
             'Poster': ALDNOAH_Zero,
-            'Description': "Năm 1972, Apollo 17 phát hiện ra một Hypergate đang tiến đến sao Hỏa trên bề mặt của mặt trăng. Sau đó công chúa Lys đến Địa Cầu để đàm phán như do một số gián điệp từ hỏa tinh tạo kế hoạch ám sát công chúa, sau đó một cuộc chiến tranh nổ ra giữa Trái Đất và sao Hỏa. Liệu công chúa của chúng ta còn sống hay không? mời các bạn xem anime Aldnoah Zero để biết thêm."
+            'Description': "Năm 1972, Apollo 17 phát hiện ra một Hypergate đang tiến đến sao Hỏa trên bề mặt của mặt trăng. Sau đó công chúa Lys đến Địa Cầu để đàm phán như do một số gián điệp từ hỏa tinh tạo kế hoạch ám sát công chúa, sau đó một cuộc chiến tranh nổ ra giữa Trái Đất và sao Hỏa. Liệu công chúa của chúng ta còn sống hay không? mời các bạn xem [animeId] Aldnoah Zero để biết thêm."
         },
         {
+            'ID': 'A04',
             'Name': 'Conan',
             'View': '?',
             'Poster': Conan,
             'Description': "Mở đầu câu truyện, cậu học sinh trung học 17 tuổi Shinichi Kudo bị biến thành cậu bé Conan Edogawa. Shinichi trong phần đầu của Thám tử lừng danh Conan được miêu tả là một thám tử học đường xuất sắc. Trong một lần đi chơi công viên \"Miền Nhiệt đới\" với cô bạn từ thuở nhỏ Ran Mori, cậu tình cờ chứng kiến vụ một án giết người, Kishida - một hành khách trong trò chơi Chuyến tàu tốc hành đã bị giết một cách dã man. Cậu đã giúp cảnh sát làm sáng tỏ vụ án. Trên đường về nhà, cậu vô tình phát hiện một vụ làm ăn mờ ám của những người đàn ông mặc toàn đồ đen. Khi chúng phát hiện ra cậu, Shinichi đã bị đánh ngất đi. Sau đó những người đàn ông áo đen đó đã cho cậu uống một thứ thuốc độc chưa qua thử nghiệm là Apotoxin-4869 (APTX 4869) với mục đích thủ tiêu cậu. Tuy nhiên chất độc đã không giết chết Kudo. Khi tỉnh lại, cậu bàng hoàng nhận thấy mình đã bị teo nhỏ lại thành hình dạng của một cậu học sinh tiểu học. Theo lời khuyên của Tiến sĩ Hiroshi Agasa, Shinichi đã che giấu tung tích, để tránh việc Tổ chức Áo đen có thể phát hiện ra rằng cậu vẫn còn sống. Khi Ran hỏi tên cậu, Shinichi đã ghép \"Conan\" trong tên của Sir Arthur Conan Doyle và \"Edogawa\" trong tên của Edogawa Rampo, buột miệng nói ra tên mình là \"Conan Edogawa\". Tiến sĩ Agasa đã nói Conan là một người cháu của mình, nhưng hiện ông đang quá bận rộn không thể chăm sóc cho chú bé nên đã nhờ Ran trông nom Conan giúp mình. Ran nhận lời và từ đó Conan sống tại nhà của Ran tức văn phòng thám tử Mori, vừa che giấu thân phận vừa điều tra tung tích của Tổ chức Áo đen và tìm kiếm thuốc giải độc."
         },
         {
+            'ID': 'A04',
             'Name': 'Doraemon',
             'View': '?',
             'Poster': Doraemon,
@@ -100,13 +105,15 @@ export default function Carousel(props) {
         <div className="absolute w-full h-full bg-black opacity-50"></div>
         <div className="absolute bottom-32 left-40 w-1/2 text-white">
             <h1 className="text-[4rem]">{Anime_list[index].Name}</h1>
-            <p onMouseOver={pauseSlideTimer} onMouseOut={resumeSlideTimer} className="overflow-auto max-h-40 h-max text-xl">{Anime_list[index].Description}</p>
+            <p onMouseOver={pauseSlideTimer} onMouseOut={resumeSlideTimer}
+               className="overflow-auto max-h-40 h-max text-xl">{Anime_list[index].Description}</p>
             <div className="flex flex-row items-center gap-16 mt-8">
-                <Link href="/player" onMouseOver={pauseSlideTimer} onMouseOut={resumeSlideTimer}
-                    className="flex flex-row justify-center items-center w-40 h-12 border-2 border-white rounded-lg bg-red-500 text-xl">
+                <Link href={`/player/${Anime_list[index]?.ID}`} onMouseOver={pauseSlideTimer}
+                      onMouseOut={resumeSlideTimer}
+                      className="flex flex-row justify-center items-center w-40 h-12 border-2 border-white rounded-lg bg-red-500 text-xl">
                     <MdPlayCircle/>Xem ngay
                 </Link>
-                <Link href="/anime">
+                <Link href={`/anime/${Anime_list[index].ID}`}>
                     <button onMouseOver={pauseSlideTimer} onMouseOut={resumeSlideTimer}
                             className="flex flex-row justify-center items-center w-40 h-12 border-2 border-black rounded-lg bg-white text-xl text-black">
                         <MdInfo/>Chi tiết

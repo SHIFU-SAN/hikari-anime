@@ -1,12 +1,22 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import NGE from "../assets/Images/Posters/NeonGenesisEvangelion/NeonGenesisEvangelion_vertical_poster.jpg";
-
 export default function AnimePoster(props) {
+    function loadImageFromUML({src, width, quality}) {
+        return `https://iili.io/${src}?w=${width}&q=${quality || 75}`;
+    }
+
     return <div className="justify-self-center w-[260px] h-max">
-        <Link href="/anime"><Image src={props.poster} width={260} alt={`${props.title} + poster`} className="border-2 border-black rounded-2xl"/></Link>
-        <Link href="/anime"><h1 className="mt-2 font-bold">{props.title}</h1></Link>
+        <Link href={`/anime/${props.id}`}>
+            <Image
+                loader={loadImageFromUML}
+                src={props.poster}
+                width={260}
+                height={400}
+                alt={`${props.name} + poster`}
+                className="border-2 border-black rounded-2xl"/>
+        </Link>
+        <Link href={`/anime/${props.id}`}><h1 className="mt-2 font-bold">{props.name}</h1></Link>
         <p>Lượt xem: ?</p>
     </div>
 }
