@@ -1,5 +1,5 @@
 "use client";
-import {useState, useEffect} from "react";
+import {useState, useEffect, Suspense} from "react";
 import {useSearchParams} from "next/navigation";
 
 import NavBar from "../components/nav-bar";
@@ -8,7 +8,7 @@ import AnimePoster from "../components/anime-poster";
 
 const BASE_API = "http://127.0.0.1:8000";
 
-export default function FindPage() {
+function FindPage() {
     const searchParams = useSearchParams();
     const name = searchParams.get("name");
     const filter = searchParams.get("filter");
@@ -64,4 +64,10 @@ export default function FindPage() {
             <Footer/>
         </div>
     </>
+}
+
+export default function Page() {
+    return <Suspense>
+        <FindPage/>
+    </Suspense>
 }
