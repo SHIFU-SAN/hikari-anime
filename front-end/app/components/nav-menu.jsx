@@ -7,7 +7,7 @@ import NavExMenu from "./nav-ex-menu"
 export default function NavMenu(props) {
     const Types = ["Hành động", "Phiêu lưu", "Ác quỷ", "Chính kịch", "Huyền ảo", "Harem", "Phép thuật",
         "Người máy", "Quân sự", "Tâm lý", "Lãng mạn", "Trường học", "Khoa học viễn tưởng", "Thanh thiếu niên", "Đời thường"]
-    const Formats = ["Truyền hình", "Điện ảnh"]
+    const Formats = ["Phim truyền hình", "Phim điện ảnh"]
     const Seasons = ["Mùa đông 2024", "Mùa thu 2024", "Mùa hạ 2024", "Mùa xuân 2024",
         "Mùa đông 2023", "Mùa thu 2023", "Mùa hạ 2023", "Mùa xuân 2023",
         "Mùa đông 2022", "Mùa thu 2022", "Mùa hạ 2022", "Mùa xuân 2022",

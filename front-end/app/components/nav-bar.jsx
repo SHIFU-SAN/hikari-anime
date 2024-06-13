@@ -50,11 +50,11 @@ export default function NavBar(props) {
                 </button>
                 <Link href="/"><Image src={Logo} width={200} alt="Hikari Anime logo"/></Link>
             </div>
-            <form action="" className="flex flex-row items-center col-span-2 border-2 border-rose-400 rounded-lg">
+            <form action="/find" className="flex flex-row items-center col-span-2 border-2 border-rose-400 rounded-lg">
                 <label htmlFor="" className="sr-only">Search</label>
-                <input type="search" placeholder="Tìm kiếm..."
+                <input type="search" name="name" placeholder="Tìm kiếm..."
                        className="w-full px-2 bg-transparent focus:outline-none"/>
-                <button
+                <button type="submit"
                     className="flex justify-center items-center size-8 bg-rose-400 text-xl text-white hover:bg-rose-500">
                     <MdSearch/></button>
             </form>

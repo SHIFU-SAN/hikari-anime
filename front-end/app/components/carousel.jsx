@@ -76,7 +76,7 @@ export default function Carousel(props) {
     function goToSlide(SlideIndex) {
         for (let i = 0; i < 5; i++) {
             const slide = document.getElementById(`point-${i}`);
-            if (slide.classList.contains("bg-white")) {
+            if (slide?.classList.contains("bg-white")) {
                 slide.classList.remove("bg-white");
                 slide.classList.add("bg-zinc-400");
             }
