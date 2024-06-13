@@ -46,11 +46,17 @@ async function deleteVideo(video_id) {
     return result ? result : null;
 }
 
+async function deleteVideosByAnime(anime_id) {
+    let result = await Video.deleteMany({AnimeID: anime_id});
+    return result ? result : null;
+}
+
 module.exports = {
     addVideo,
     showAllVideos,
     findVideosByAnime,
     findVideoByID,
     updateVideo,
-    deleteVideo
+    deleteVideo,
+    deleteVideosByAnime
 }

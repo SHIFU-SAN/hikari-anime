@@ -8,7 +8,8 @@ const {
     findVideosByAnime,
     findVideoByID,
     updateVideo,
-    deleteVideo
+    deleteVideo,
+    deleteVideosByAnime
 } = require("../services/VideoServices");
 const res = require("express/lib/response");
 
@@ -81,11 +82,22 @@ async function removeVideo(req, res) {
     }
 }
 
+async function removeVideosByAnime(req, res) {
+    try {
+        let video = await deleteVideosByAnime(req.params.id);
+        return res.json(video);
+    } catch (err) {
+        console.error(`Failed to remove these videos! Because: ${err}`);
+    }
+}
+
+
 module.exports = {
     createVideo,
     readVideosList,
     readVideosByAnime,
     readVideoByID,
     setVideo,
-    removeVideo
+    removeVideo,
+    removeVideosByAnime
 }

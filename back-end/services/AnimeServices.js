@@ -32,19 +32,6 @@ async function findAnimeByID(id) {
     return result ? result : null;
 }
 
-async function findAnimeByGenre(genre) {
-    let anime_list = await Anime.find();
-    let result = [];
-    for (anime in anime_list) {
-        for (e in anime.Genre) {
-            if (e == genre) {
-                result.push(anime);
-            }
-        }
-    }
-    return result;
-}
-
 async function updateAnime(id, new_content) {
     let result = await Anime.findOne({ID: id});
     if (new_content.Name) {
@@ -102,7 +89,6 @@ module.exports = {
     addAnime,
     showAllAnime,
     findAnimeByID,
-    findAnimeByGenre,
     updateAnime,
     deleteAnime
 }

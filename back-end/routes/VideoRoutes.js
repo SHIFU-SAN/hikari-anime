@@ -7,7 +7,8 @@ const {
     readVideosByAnime,
     readVideoByID,
     setVideo,
-    removeVideo
+    removeVideo,
+    removeVideosByAnime
 } = require("../controllers/VideoController");
 
 const app = express();
@@ -20,5 +21,6 @@ router.get('/anime/:id', readVideosByAnime);
 router.get("/:id", readVideoByID);
 router.put("/:id", setVideo);
 router.delete("/delete/:id", removeVideo);
+router.delete("/delete/anime/:id", removeVideosByAnime)
 
 module.exports = router;

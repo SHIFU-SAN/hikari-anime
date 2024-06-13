@@ -7,7 +7,7 @@ const {
     readAnimeByID,
     readAnimeByGenre,
     setAnime,
-    removeAnime
+    removeAnime, readAnimeByName
 } = require("../controllers/AnimeController");
 
 const app = express();
@@ -17,8 +17,6 @@ app.use(express.json());
 router.post('/add', createAnime);
 router.get('/', readAnimeList);
 router.get('/:id', readAnimeByID);
-router.get('/:genre', readAnimeByGenre);
 router.put('/:id', setAnime);
 router.delete('/delete/:id', removeAnime);
-
 module.exports = router;

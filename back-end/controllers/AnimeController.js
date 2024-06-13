@@ -6,7 +6,6 @@ const {
     addAnime,
     showAllAnime,
     findAnimeByID,
-    findAnimeByGenre,
     updateAnime,
     deleteAnime
 } = require("../services/AnimeServices");
@@ -53,15 +52,6 @@ async function readAnimeByID(req, res) {
     }
 }
 
-async function readAnimeByGenre(req, res) {
-    try {
-        let anime_list = await findAnimeByGenre(req.params.genre);
-        return res.json(anime_list);
-    } catch (err) {
-        console.error(`Failed to read anime object! Because: ${err}`);
-    }
-}
-
 async function setAnime(req, res) {
     try {
         let anime = await updateAnime(req.params.id, req.body);
@@ -84,7 +74,6 @@ module.exports = {
     createAnime,
     readAnimeList,
     readAnimeByID,
-    readAnimeByGenre,
     setAnime,
     removeAnime
 }
